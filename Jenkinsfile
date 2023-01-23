@@ -15,7 +15,7 @@ pipeline {
     stage('K8S Manifest Update') {
       steps {
         sh '''
-          sudo git add /root/cd/k3s/
+          sudo git add .
           sudo git commit -m "Commit from Jenkins"
         '''            
         withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
