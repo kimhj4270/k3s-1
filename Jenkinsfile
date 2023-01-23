@@ -9,7 +9,7 @@ pipeline {
 
     stage('K8S Manifest Update') {
       steps {
-        sh 'touch 1.1 && echo "2" >> ./1.1'
+        sh 'touch 1.1 && echo "23" >> ./1.1'
 	sh 'git init'
         sh 'git add -u .'
         sh 'git config --global user.email "jjs_0719@naver.com"'
