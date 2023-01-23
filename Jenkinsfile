@@ -9,7 +9,6 @@ pipeline {
 
     stage('K8S Manifest Update') {
       steps {
-        sh 'sudo cd /'
         sh 'sudo git init'
         sh 'sudo git add /root/k3s'
         sh 'sudo git commit -m "v2"'
