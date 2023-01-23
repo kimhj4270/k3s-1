@@ -8,6 +8,8 @@ pipeline {
     }
     stage('cp manifest') {
       steps {
+        sh 'ls -l'
+        sh 'pwd'
         sh 'sudo cp -r /root/k3s/ /root/cd/'
       }
     }
