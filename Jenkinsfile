@@ -9,13 +9,13 @@ pipeline {
 
     stage('K8S Manifest Update') {
       steps {
-        sh 'touch 1.1 && echo "please1" >> ./1.1'
-	sh 'git init'
-        sh 'git add Jenkinsfile'
-        sh 'git config --global user.email "jjs_0719@naver.com"'
-        sh 'git config --global user.name "jitoo"'
-        sh 'sudo git commit -m "Update for Jenkins"'
         withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
+          sh 'touch 1.1 && echo "please1" >> ./1.1'
+          sh 'git init'
+          sh 'git add .'
+          sh 'git config --global user.email "jjs_0719@naver.com"'
+          sh 'git config --global user.name "jitoo"'
+          sh 'sudo git commit -m "Update for Jenkins"'
           sh 'git remote set-url origin https://$username:$password@github.com/jitoo/k3s.git'
           sh 'git push -u origin +main --force'
         }
