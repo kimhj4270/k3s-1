@@ -12,11 +12,10 @@ pipeline {
         git branch: 'main',
             credentialsId: 'jitoo',
             url: 'https://github.com/jitoo/k3s'
-	sh 'sudo git init'
-        sh 'sudo git add .'
-        sh 'sudo git commit -m "v2"'
-        withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
-          sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
+	sh 'git init'
+        sh 'git add .'
+        sh 'git commit -m "v2"'
+        sh 'git push -u origin main'
         }
       }
     }
