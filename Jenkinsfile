@@ -8,7 +8,7 @@ pipeline {
     }
     stage('cp manifest') {
       steps {
-        sh 'sudo -S cp /root/k3s/*.yaml /root/cd/k3s'
+        sh 'cp /root/k3s/*.yaml /root/cd/k3s'
       }
     }
 
