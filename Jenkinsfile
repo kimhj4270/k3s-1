@@ -21,9 +21,9 @@ pipeline {
           sudo git add .
           sudo git commit -m "Commit from Jenkins"
         '''            
-      }
-      withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
-        sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
+        withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
+          sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
+        }
       }
     }
 
