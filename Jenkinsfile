@@ -14,6 +14,8 @@ pipeline {
             url: 'https://github.com/jitoo/k3s'
 	sh 'git init'
         sh 'git add .'
+        sh 'git config --global user.email "123@xample.com"'
+        sh 'git config --global user.name "jitoo"'
         sh 'git commit -m "v2"'
         sh 'git push -u origin main'
         
