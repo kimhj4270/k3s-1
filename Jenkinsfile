@@ -9,7 +9,7 @@ pipeline {
     stage('cp manifest') {
       steps {
         sh '''
-          cp -r /root/k3s/* /root/cd/k3s
+          sudo cp -r /root/k3s/* /root/cd/k3s
         '''
       }
     }
