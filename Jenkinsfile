@@ -14,7 +14,7 @@ pipeline {
         sh 'git add -u .'
         sh 'git config --global user.email "jjs_0719@naver.com"'
         sh 'git config --global user.name "jitoo"'
-        sh 'git branch -m main'
+#        sh 'git branch -m main'
         sh 'sudo git commit -m "Update for Jenkins"'
         withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
           sh 'git remote set-url origin https://$username:$password@github.com/jitoo/k3s.git'
