@@ -15,9 +15,9 @@ pipeline {
     stage('K8S Manifest Update') {
       steps {
         sh '''
-          cd /root/cd/k3s
-          git add .
-          git commit -m "Commit from Jenkins"
+          sudo cd /root/cd/k3s
+          sudo git add .
+          sudo git commit -m "Commit from Jenkins"
         '''            
         withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
           sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
