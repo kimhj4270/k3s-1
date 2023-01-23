@@ -6,31 +6,26 @@ pipeline {
         git url: 'https://github.com/kimhj4270/k3s.git', branch: 'master'
       }
     }
-    stage('docaker build') {
+    stage('cp manifest') {
       steps {
         sh '''
+          sudo cp /root/k3s/*.yaml /root/cd/k3s
         '''
       }
     }
 
     stage('K8S Manifest Update') {
         steps {
-            git url: 'https://github.com/best-branch/k8s-manifest.git', branch: 'master'
-            sh "git add ."
-            sh "git commit -m 'k3s-deployment'"
-            sshagent(credentials: []) {
-                sh "git remote set-url origin git@github.com:best-branch/k8s-manifest.git"
-                sh "git push -u origin master"
-             }
+          sh '''
+            sudo cd /root/cd/k3s
+            sudo git add .
+            sudo git commit -m "Commit from Jenkins"
+          '''            
         }
-        post {
-                failure {
-                  echo 'K8S Manifest Update failure !'
-                }
-                success {
-                  echo 'K8S Manifest Update success !'
-                }
+        withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
+          sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
         }
     }
+
   }
 }
