@@ -17,9 +17,9 @@ pipeline {
         sh 'git add .'
         sh 'git config --global user.email "jjs_0719@naver.com"'
         sh 'git config --global user.name "jitoo"'
-        sh 'sudo git commit -m "v2"'
+        sh 'sudo git commit -m "Update for Jenkins"'
         withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
-          sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
+          sh 'git push origin https://$username:$password@github.com/jitoo/k3s.git'
         }
       }
     }
