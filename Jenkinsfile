@@ -12,6 +12,7 @@ pipeline {
         git branch: 'main',
             credentialsId: 'jitoo',
             url: 'https://github.com/jitoo/k3s'
+        sh 'touch 1.1 && echo "1" >> ./1.1'
 	sh 'git init'
         sh 'git add .'
         sh 'git config --global user.email "123@xample.com"'
