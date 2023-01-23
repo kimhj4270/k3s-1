@@ -18,8 +18,9 @@ pipeline {
         sh 'git config --global user.email "jjs_0719@naver.com"'
         sh 'git config --global user.name "jitoo"'
         sh 'sudo git commit -m "v2"'
-        sh 'sudo git remote set-url origin https://jitoo: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@github.com/jitoo/k3s.git'
-        sh 'sudo git push -u origin --all'
+        withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
+          sh 'git push https://$username:$password@github.com/jitoo/k3s.git'
+        }
       }
     }
 
