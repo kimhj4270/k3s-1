@@ -16,7 +16,7 @@ pipeline {
         sh 'git add .'
         sh 'git commit -m "v2"'
         sh 'git push -u origin main'
-        }
+        
       }
     }
 
