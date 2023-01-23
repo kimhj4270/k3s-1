@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('git scm update') {
       steps {
-        git clone https://github.com/kimhj4270/k3s
+        sh 'git clone https://github.com/kimhj4270/k3s'
       }
     }
 
