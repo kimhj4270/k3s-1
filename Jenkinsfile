@@ -17,7 +17,7 @@ pipeline {
         sh 'sudo git commit -m "Update for Jenkins"'
         withCredentials([usernamePassword(credentialsId: 'jitoo', passwordVariable: 'password', usernameVariable: 'username')]) {
           sh 'git remote set-url origin https://$username:$password@github.com/jitoo/k3s.git'
-          sh 'git push origin main'
+          sh 'git push origin +main'
         }
       }
     }
