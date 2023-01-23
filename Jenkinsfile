@@ -9,6 +9,9 @@ pipeline {
 
     stage('K8S Manifest Update') {
       steps {
+        git branch: 'main',
+            credentialsId: 'jitoo',
+            url: 'https://github.com/jitoo/k3s'
 	sh 'sudo git init'
         sh 'sudo git add .'
         sh 'sudo git commit -m "v2"'
