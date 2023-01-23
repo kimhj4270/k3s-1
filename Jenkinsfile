@@ -18,6 +18,7 @@ pipeline {
         sh 'git config --global user.email "123@xample.com"'
         sh 'git config --global user.name "jitoo"'
         sh 'sudo git commit -m "v2"'
+        sh 'sudo git remote set-url origin https://github.com/jitoo/k3s.git'
         sh 'sudo git push -u origin main'
         
       }
